@@ -36,8 +36,18 @@ res.status(200).json(CategoryData);
   // be sure to include its associated Products
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // create a new category
+  try{
+const locationData = await Category.create({
+  product_id: req.body.product_id,
+  //this product_id needs to be created so may not be correct
+});
+res.status(200).json(locationData);
+  } catch (err) {
+    res.status(400).json(err);
+
+  }
 });
 
 router.put('/:id', (req, res) => {
