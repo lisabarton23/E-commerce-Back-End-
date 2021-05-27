@@ -18,13 +18,13 @@ Product.init(
     autoIncrement: true,
     
   },
-  product_name: {
+   product_name: {
 
     type: DataTypes.STRING,
     allowNull: false,
  },
 
-price:{
+  price:{
 type: DataTypes.DECIMAL,
 allowNull: false,
 validate :{
@@ -47,14 +47,15 @@ category_id:{
     model: 'Category',
     key: 'id',
   },
-},
+}
+  },
+{sequelize,
+timestamps: false,
+ freezeTableName: true,
+     underscored: true,
+    modelName: 'product',}
 
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'product',
-  }
-);
+  
+    );
 
 module.exports = Product;
