@@ -10,18 +10,19 @@ Product.belongsTo(Category, {
 })
 // Categories have many Products
 Category.hasMany(Product, {
-  foreignKey:'category_id'
-  //do I need to add a CASCADE ON DELETE?
+  foreignKey:'product_id',
+  onDelete: 'CASCADE',
+  
 })
 
 // Products belongToMany Tags (through ProductTag)
 Product.belongsToMany(Tag,{
-  through: ProductTag
+  through: 'ProductTag', foreingKey: "product_Id"
   
 }),
 // Tags belongToMany Products (through ProductTag)
 Tag.belongsToMany(Product, {
-  through : ProductTag
+  through : 'ProductTag', foreignKey: "tag_id"
 })
 module.exports = {
   Product,
